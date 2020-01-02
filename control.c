@@ -35,7 +35,7 @@ int main(int argc, char * argv[]) {
 			printf("semaphore created\n");
 		}
 		//create shared memory
-		shmd = shmget(SHMKEY, 256, IPC_CREAT | IPC_EXCL | 0777);
+		shmd = shmget(SHMKEY, 1024, IPC_CREAT | IPC_EXCL | 0777);
 		if (shmd < 0) {
 			printf("error creating shared memory: %s\n", strerror(errno));
 			return errno;
@@ -74,7 +74,7 @@ int main(int argc, char * argv[]) {
 		write(STDOUT_FILENO, content, fileinfo.st_size);
 		close(fd);
 		//remove shared memory
-		shmd = shmget(SHMKEY, 256, 0777);
+		shmd = shmget(SHMKEY, 1024, 0777);
 		if (shmd < 0) {
 			printf("error accessing shared memory: %s\n", strerror(errno));
 			return errno;

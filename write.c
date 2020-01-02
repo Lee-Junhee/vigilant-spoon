@@ -27,12 +27,12 @@ int main() {
 	sb.sem_op = -1;
 	sb.sem_flg = SEM_UNDO;
 	semop(semd, &sb, 1);
-	shmd = shmget(SHMKEY, 256, 0);
+	shmd = shmget(SHMKEY, 1024, 0);
 	content = shmat(shmd, 0, 0);
 	printf("Last addition: %s\n", content);
 	printf("Your addition: ");
-	fgets(content, 256, stdin);
-	write(fd, content, 256);
+	fgets(content, 1024, stdin);
+	write(fd, content, 1024);
 	close(fd);
 	shmdt(content);
 	sb.sem_op = 1;
