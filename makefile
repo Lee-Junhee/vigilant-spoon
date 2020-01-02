@@ -4,15 +4,15 @@ else
 	CC = gcc
 endif
 
-all: control.o
-	$(CC) -o control control.o
+all: control.o write.o info.h 
+	$(CC) -o control control.o 
 	$(CC) -o write write.o
 
-control.o: control.c key.h
-	$(CC) -c control.c
+control.o: control.c info.h 
+	$(CC) -c control.c 
 
-write.o: write.c key.h
-	$(CC) -c write.c
+write.o: write.c info.h
+	$(CC) -c write.c 
 
 run: all
 	./control
